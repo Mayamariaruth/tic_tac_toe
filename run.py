@@ -1,4 +1,4 @@
-def game_board(board):
+def game_board():
     """
     
     """
@@ -14,7 +14,7 @@ def start_game():
     Prints a welcome message and asks for users name with an input.
     Calls for check_user_name function to validate users input.
     """
-    game_board(board)
+    game_board()
     print("")
     print("Welcome to Tic Tac Toe!")
     print("We first need to know who is challenging our fierce Computer.")
@@ -47,9 +47,11 @@ def players():
     if user_player == "X":
         print("You are X and the Computer is O!")
         computer_player = "0" 
+        play_game()
     elif user_player == "O":
         print("You are O and the Computer is X!")
         computer_player = "X" 
+        play_game()
     else:
         print("")
         print("Invalid data: Please insert X or O.")
@@ -57,12 +59,15 @@ def players():
     
     return user_player, computer_player
   
-
-
 def play_game():
     """
     
     """
+    game_board()
+    print("")
+    print(f"You are {user_player} and the Computer is {computer_player}.")
+    print("Rules: The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.")
+  
 
 def player_positions():
     """
@@ -83,5 +88,7 @@ def main():
     cleaner code
     """
     start_game()
+    players()
+    play_game()
 
 main()
