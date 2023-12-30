@@ -12,6 +12,7 @@ def game_board(board):
 def start_game():
     """
     Prints a welcome message and asks for users name with an input.
+    Calls for check_user_name function to validate users input.
     """
     game_board(board)
     print("")
@@ -22,12 +23,13 @@ def start_game():
 
 def check_user_name(name):
     """
-    Validates users name by checking that they've inserted only letters
+    Validate users name by checking that they've inserted only letters
     or they're sent back to input their names again with an error message
     """
     if name.isalpha():
-        print("Thank you!")
+        print(f"Thank you {name}!")
     else:
+        print("")
         print("Invalid data: Please insert your name with only letters.")
         start_game()   
 
@@ -35,9 +37,26 @@ def players():
     """
     Asks player if they want to be "X" or "O" and
     Computer becomes the other one
-
-
     """
+    print("")
+    user_player = input("Would you like to be X or O?\n")
+    computer_player = "" 
+
+    user_player = user_player.upper()
+  
+    if user_player == "X":
+        print("You are X and the Computer is O!")
+        computer_player = "0" 
+    elif user_player == "O":
+        print("You are O and the Computer is X!")
+        computer_player = "X" 
+    else:
+        print("")
+        print("Invalid data: Please insert X or O.")
+        players()
+    
+    return user_player, computer_player
+  
 
 
 def play_game():
