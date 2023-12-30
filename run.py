@@ -1,4 +1,4 @@
-def game_board():
+def game_board(board):
     """
     
     """
@@ -11,14 +11,25 @@ def game_board():
 
 def start_game():
     """
-    Prints a welcome message and asks for users name with an input
-
+    Prints a welcome message and asks for users name with an input.
     """
+    game_board(board)
     print("")
     print("Welcome to Tic Tac Toe!")
     print("We first need to know who is challenging our fierce Computer.")
     name = input("Please enter your name:\n")
-    
+    check_user_name(name)
+
+def check_user_name(name):
+    """
+    Validates users name by checking that they've inserted only letters
+    or they're sent back to input their names again with an error message
+    """
+    if name.isalpha():
+        print("Thank you!")
+    else:
+        print("Invalid data: Please insert your name with only letters.")
+        start_game()   
 
 def players():
     """
@@ -52,7 +63,6 @@ def main():
     Call on all game functions, all collected inside one function for
     cleaner code
     """
-    game_board()
     start_game()
 
 main()
