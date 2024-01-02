@@ -1,8 +1,7 @@
 import random
 
-# Global variables to be able to use in most functions
+# Global variable to be able to use in most functions
 Board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-Turn = 0
 
 def game_board():
     """
@@ -24,10 +23,7 @@ def start_game():
     print("")
     print("Welcome to Tic Tac Toe!")
     print("We first need to know who is challenging our fierce Computer.")
-    name = input("Please enter your name:\n")
-
-    # Make user name capitalized
-    name = name.capitalize()
+    name = input("Please enter your name:\n").capitalize()
 
     check_user_name(name)
 
@@ -53,11 +49,8 @@ def players():
     they receive an error message and are asked again.
     """
     print("")
-    user_player = input("Would you like to be X or O?\n")
+    user_player = input("Would you like to be X or O?\n").upper()
     computer_player = "" 
-
-    # Make user's input uppercase in case they write "X" or "O" in small letters
-    user_player = user_player.upper()
   
     if user_player == "X":
         print("You are X and the Computer is O!")
@@ -94,11 +87,65 @@ def check_winner(Board):
             return Board[combo[0]]
 
 
-def check_turn(Turn):
+def play_game(user_player, computer_player, Board):
     """
-    Alternates between turns for players with an odd or even number ("O" is even and "X" is odd)
+    
     """
-    return "O" if Turn % 2 == 0 else "X"
+    turn = 0
+    
+    while True:
+        print("")
+        game_board()
+        print("")
+        print(f"You are {user_player} and the Computer is {computer_player}.")
+        print("Rules: The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.")
+
+        # User's turn
+        if turn % 2 == 0:
+            choice = input("Please select a number from 1 to 9:\n")
+            try:
+                choice = int(choice)
+                if Board[int(choice) - 1] not in ["X", "O"]:
+                    Turn += 1
+                    Board[choice - 1] = user_player
+                    winner = check_winner(Board)
+            
+                    if winner:
+                        print("")
+                        game_board()
+                        print("")
+                        print(f"{winner} is the winner!")
+                        break
+            
+                    if Turn == 9:
+                        print("")
+                        game_board()
+                        print("")
+                        print("It's a tie!")
+                        break
+                else:
+                    print("Invalid move. That cell is already taken. Please choose again.")
+            except ValueError:
+                print("Invalid input. Please choose a number from 1 to 9.")
+
+        # Computer's turn
+        computer_move(computer_player, Board)
+        turn += 1
+        winner = check_winner(Board)
+        
+        if winner:
+            print("")
+            game_board()
+            print("")
+            print(f"{winner} is the winner!")
+            break
+        
+        if Turn == 9:
+            print("")
+            game_board()
+            print("")
+            print("It's a tie!")
+            break
 
 
 def computer_move(computer_player, Board):
@@ -111,54 +158,15 @@ def computer_move(computer_player, Board):
 
     # If there are empty positions, the computer chooses a random one
     if empty_positions:
-        computer_choice = random.randint(empty_positions)
+        computer_choice = random.choice(empty_positions)
         Board[computer_choice] = computer_player
-    else:
-        print("The board is full. It's a tie!")
 
-
-def play_game(user_player, computer_player, Board, Turn):
-    """
-    
-    """
-    while True:
-        print("")
-        game_board()
-        print("")
-        print(f"You are {user_player} and the Computer is {computer_player}.")
-        print("Rules: The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.")
-
-        # User's turn
-        choice = input("Please select a number from 1 to 9:\n")
-        try:
-            choice = int(choice)
-            if Board[int(choice) - 1] not in ["X", "O"]:
-                Turn += 1
-                Board[choice - 1] = check_turn(Turn)
-                winner = check_winner(Board)
-        
-                if winner:
-                    print(f"{winner} is the winner!")
-                    break
-        
-                if Turn == 9:
-                    print("It's a tie!")
-                    break
-            else:
-                print("Invalid move. That cell is already taken. Please choose again.")
-        except ValueError:
-            print("Invalid input. Please choose a number from 1 to 9.")
-
-        # Computer's turn
-        computer_move(computer_player, Board)
 
 def play_again():
     """
     
     """
-    play_again = input("Would you like to play again? (Y/N)\n")
-
-    play_again = play_again.upper()
+    play_again = input("Would you like to play again? (Y/N)\n").upper()
     try:
         if play_again == "Y":
             start_game()
