@@ -71,18 +71,14 @@ Link to the live site here - [Tic Tac Toe]()
 
 ### Manual testing
 I manually tested this site in multiple ways highlighted below:
-* Tested every feature and its responsiveness through an extension of a live server in VScode.
-* Deployed the site in an early stage and received feedback from a professional developer (mentor), as well as students in my community.
-* Tested the site for cross-compatibility in the two most used browsers, Chrome and Safari.
-* I used DevTools to easily move between different screen sizes, simulating sizes between 320px to 4000px (but it is also functional on even larger screens given the max-width setting on the Body element to keep the content compact instead of stretched).
+* Passed the code through a PEP8 linter with no errors present.
+* Tested the code in [Replit](https://replit.com/~) through the Console output.
+* Tested invalid inputs to confirm that the code worked properly with errors.
+* Deployed the project in Heroku at an early stage and received feedback from a professional developer (mentor), as well as multiple Python-proficient friends.
 
 ### Validator Testing 
-I tested all the pages in the validators to make sure they all passed.
-- HTML
-  - There were no errors present when passing through the official W3C validator ![W3C validator](docs/screenshots/html-validator.png)
-
-- CSS
-  - There were no errors present when passing through the official Jigsaw validator ![(Jigsaw) validator](docs/screenshots/css-validator.png)
+- PEP8
+  - There were no errors present when passing through the PEP8 testor ![PEP8](docs/screenshots/)
 
 ### JSHint testing
 There were no warnings with the JSHint testing after successfully sorting out the bugs highlighted in the [Bugs section](#bugs).
