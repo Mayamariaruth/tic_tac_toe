@@ -1,13 +1,14 @@
+Board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 def game_board():
     """
     
     """
-    board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    print(board[0] + " | " + board[1] + " | " + board[2])
+    print(Board[0] + " | " + Board[1] + " | " + Board[2])
     print("---------")
-    print(board[3] + " | " + board[4] + " | " + board[5])
+    print(Board[3] + " | " + Board[4] + " | " + Board[5])
     print("---------")
-    print(board[6] + " | " + board[7] + " | " + board[8])
+    print(Board[6] + " | " + Board[7] + " | " + Board[8])
 
 
 def start_game():
@@ -20,6 +21,8 @@ def start_game():
     print("Welcome to Tic Tac Toe!")
     print("We first need to know who is challenging our fierce Computer.")
     name = input("Please enter your name:\n")
+    name = name.capitalize()
+
     check_user_name(name)
 
 
@@ -29,7 +32,8 @@ def check_user_name(name):
     or they're sent back to input their names again with an error message
     """
     if name.isalpha():
-        print(f"Thank you {name}!")
+        print(f"Welcome {name}!")
+        players()
     else:
         print("")
         print("Invalid data: Please insert your name with only letters.")
@@ -63,15 +67,31 @@ def players():
     return user_player, computer_player
 
 
-def check_winner():
+def check_board():
     """
     
-    Asks user if they want to play again and is taken to another round with
-    the play_game function
     """
+    # Check rows, columns, and diagonals for a winner
+    for i in range(3):
+        # Check rows
+        if Board[i * 3] == Board[i * 3 + 1] == Board[i * 3 + 2] != " ":
+            return Board[i * 3]
+  
+        # Check columns
+        if Board[i] == Board[i + 3] == Board[i + 6] != " ":
+            return Board[i]
+  
+    # Check diagonals
+    if Board[0] == Board[4] == Board[8] != " ":
+        return Board[0]
+    if Board[2] == Board[4] == Board[6] != " ":
+        return Board[2]
+    
+    # If no 
+    return None
 
 
-def check_turn(turn):
+def check_turn():
     """
     
     """
@@ -97,7 +117,7 @@ def play_game(user_player, computer_player, turn):
         if Board[int(choice) - 1] not in ["X", "O"]:
             turn += 1
             Board[int(choice) - 1] = check_turn(turn)
-            winner = check_winner(Board)
+            winner = check_board(Board)
     
             if winner:
                 print(f"{winner} is the winner!")
@@ -125,8 +145,7 @@ def play_again():
 
 def main():
     """
-    Call on all game functions, all collected inside one function for
-    cleaner code
+    Call on game functions
     """
     start_game()
     play_again()
