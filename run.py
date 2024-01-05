@@ -247,11 +247,40 @@ def play_again():
             break
         elif play_again == "N":
             clear_console()
-            print("    Thank you for playing!")
-            start_game()
+            game_end()
             break
         else:
             print("    Invalid input. Please enter Y/N.")
+
+
+def game_end():
+    """
+    Prints a thank you text to user and allows the user
+    to go back to the game if they want to play again.
+    """
+    print("")
+    print("""
+    ▀█▀ █░█ ▄▀█ █▄░█ █▄▀   █▄█ █▀█ █░█ 
+    ░█░ █▀█ █▀█ █░▀█ █░█   ░█░ █▄█ █▄█
+    """)
+    print("""
+    █▀▀ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █ █▄░█ █▀▀ █
+    █▀░ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ █ █░▀█ █▄█ ▄
+    """)
+
+    while True:
+        print("")
+        restart_game = input("    Enter G to go back to the game:\n    ")
+        restart_game = restart_game.upper()
+
+        if restart_game == "G":
+            clear_console()
+            start_game()
+            break
+        else:
+            clear_console()
+            print("    Invalid input. Please enter G to go back to the game.")
+            game_end()
 
 
 start_game()
