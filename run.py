@@ -74,9 +74,8 @@ def check_winner(Board):
     """
     Defines the winning combinations as lists
     and check's the board for the winner
-    by looking at winning combination for three matching symbols
-    (and not empty space)
-    and then returns the symbol (as the winner in the play_game function)
+    by looking at the combinations for three matching symbols
+    (and not empty spaces) and then returns the symbol as the winner
     """
     # Define winning combinations as lists
     winning_combinations = [
@@ -95,7 +94,7 @@ def play_game(user_player, computer_player, Board):
     """
     Alternates between users/computers turn and receives an
     input from the user that is validated
-    (spot is empty and input is a number or receives error).
+    (spot is empty and input is a number or they receive an error).
     The selected number changes to users or computers symbol.
     """
     turn = 0
@@ -106,35 +105,43 @@ def play_game(user_player, computer_player, Board):
         print("")
         print(f"You are {user_player} and the Computer is {computer_player}.")
         print("Rules: The first player to get 3 of their marks in a row")
-        print("(up, down, across, or diagonally) is the winner.")
+        print("(vertically, horizontally, or diagonally) is the winner.")
 
         # User's turn
         if turn % 2 == 0:
             choice = input("Please select a number from 1 to 9:\n")
             try:
                 choice = int(choice)
-                if Board[int(choice) - 1] not in ["X", "O"]:
-                    turn += 1
-                    Board[choice - 1] = user_player
-                    winner = check_winner(Board)
+                if 1 <= choice <= 9:
+                    if Board[int(choice) - 1] not in ["X", "O"]:
+                        turn += 1
+                        Board[choice - 1] = user_player
+                        winner = check_winner(Board)
 
-                    if winner:
-                        print("")
-                        game_board()
-                        print("")
-                        print(f"{winner} is the winner!")
-                        break
+                        if winner:
+                            print("")
+                            game_board()
+                            print("")
+                            print(f"{winner} is the winner!")
+                            break
 
-                    if turn == 9:
-                        print("")
-                        game_board()
-                        print("")
-                        print("It's a tie!")
-                        break
+                        if turn == 9:
+                            print("")
+                            game_board()
+                            print("")
+                            print("It's a tie!")
+                            break
+                    else:
+                        print("That cell is taken. Please choose again.")
+                        ConnectionRefusedError
+                        continue
                 else:
-                    print("That cell is already taken. Please choose again.")
+                    print("Invalid. Please choose a number from 1 to 9.")
+                    ConnectionRefusedError
+                    continue
             except ValueError:
                 print("Invalid input. Please choose a number from 1 to 9.")
+                continue
 
         # Computer's turn
         computer_move(computer_player, Board)
@@ -174,16 +181,18 @@ def computer_move(computer_player, Board):
 def play_again():
     """
     Asks user if they want to play again and initiates
-    start_game function or prints a thank you message
+    start_game function or prints a thank you message.
     """
-    play_again = input("Would you like to play again? (Y/N)\n").upper()
-    try:
+    while True:
+        play_again = input("Would you like to play again? (Y/N)\n").upper()
         if play_again == "Y":
             start_game()
-        else:
+            break
+        elif play_again == "N":
             print("Thank you for playing!")
-    except ValueError:
-        print("Invalid input. Please choose Y/N.")
+            break
+        else:
+            print("Invalid input. Please enter Y/N.")
 
 
 def main():
