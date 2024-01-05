@@ -40,21 +40,20 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 
 ### Existing features
 - 
-
-![Header](docs/screenshots/)
-
-- 
-
-![Home page](docs/screenshots/)
+    *
+![Start](docs/screenshots/start.png)
 
 - 
-
-![Quiz](docs/screenshots/)
+![Start questions](docs/screenshots/name.png)
 
 - 
+![Game](docs/screenshots/game.png)
 
-![End of quiz](docs/screenshots/)
+- 
+![Winner](docs/screenshots/winner.png)
 
+- 
+![End of game](docs/screenshots/end.png)
 
 ### Future features
 - Add a timer for the user's turn.
@@ -69,7 +68,6 @@ This project is a functional based application with one global variable, "board"
 This variable is passed through the various functions that run the game and it updates its value (replacing the numbers with an "X" or "O") after each user input during the Tic Tac Toe game.
 
 The global variable is then reset at the end of the playthrough by declaring it again with its initial value in the play_game function.
-
 
 ## Testing 
 
@@ -88,7 +86,18 @@ I manually tested this site in multiple ways highlighted below:
 
 To deploy the site to Heroku, I went through below steps: 
 - Go to [Heroku](https://heroku.com/) and log into your account.
-- 
+- Click "Create new app" on the front page.
+- Give your app a name (every name has to be unique on Heroku so it's ok if you can't name your project the same as on GitHub).
+- Choose your region (USA or Europe) and click "Create app".
+- You're then taken to the dashboard of your app where you have a navigation bar. Click on the Settings tab and scroll down to "Config Vars".
+- Click "Reveal Config Vars" and input the key as "PORT" and the value as "8000" and press "Add".
+- Underneath this section, you have the "Buildpacks" section. Click "Add buildpack" and add the "python" buildpack (make sure to click "save changes" after selecting each buildpack), as well as the "nodejs" buildpack.
+- Go back to the navigation bar and select "Deploy".
+- Scroll down to the "Connect to GitHub" section and click the connect button.
+- After allowing Heroku access to GitHub, the "Connect to GitHub" section will allow you to search for the repository you wish to connect.
+- Find your repository and click "Connect".
+- You can now choose automatic deploys (Heroku deploys your app after every GitHub push you make) or manual deploys.
+- After choosing a deployment method, click the deploy button and make sure you deploy from the correct branch.
 
 Live link to the site - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herokuapp.com/)
 
