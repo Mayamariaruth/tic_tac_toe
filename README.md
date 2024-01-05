@@ -17,6 +17,7 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 1. [**Features**](#Features)
     * [***Existing features***](#existing-features)
     * [***Future features***](#future-features)
+1. [**Data model**](#data-model)
 1. [**Testing**](#testing)
     * [***Manual testing***](#manual-testing)
     * [***Validator testing***](#validator-testing)
@@ -61,6 +62,15 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 - Add more fun design aspects such as colors and emojis.
 - Improve the Computer's mark selection based on the game board after each user selection.
 
+## Data model
+
+This project is a functional based application with one global variable, "board".
+
+This variable is passed through the various functions that run the game and it updates its value (replacing the numbers with an "X" or "O") after each user input during the Tic Tac Toe game.
+
+The global variable is then reset at the end of the playthrough by declaring it again with its initial value in the play_game function.
+
+
 ## Testing 
 
 ### Manual testing
@@ -72,14 +82,14 @@ I manually tested this site in multiple ways highlighted below:
 
 ### Validator Testing 
 - PEP8
-  - There were no errors present when passing through the PEP8 CI testor ![PEP8](docs/screenshots/)
+  - There were no errors present when passing through the PEP8 CI testor ![PEP8](docs/screenshots/pep8.png)
 
 ## Deployment
 
 To deploy the site to Heroku, I went through below steps: 
 - 
 
-Live link to the site - [TicTacToe](https://tictactoe1-722b4773e2cf.herokuapp.com/)
+Live link to the site - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herokuapp.com/)
 
 ### Cloning
 
@@ -112,7 +122,7 @@ I used the cloning method to use the VSCode desktop IDE with GitHub, below are t
 4. **Issue**
     * Board doesn't reset when deciding to play again, previous game plays continues on to the next round.
 * **Fix**
-    * Define the global variable 'board' with its initial value in the play_again function.
+    * Declare the global variable 'board' with its initial value in the play_again function.
 
 
 ### Unfixed Bugs

@@ -125,7 +125,8 @@ def check_winner(board):
 
 def play_game(user_player, computer_player, board):
     """
-    Alternates between users/computers turn and receive an
+    Alternates between users/computers turn
+    but always starting with "X" and receives an
     input from the user that is validated
     (spot is empty and input is a number between 1-9).
     The selected number changes to user's or computer's symbol.
@@ -145,7 +146,7 @@ def play_game(user_player, computer_player, board):
         print("    (vertically, horizontally, or diagonally) is the winner.")
 
         # User's turn
-        if turn % 2 == 0:
+        if turn % 2 == (user_player == "O") and user_player in {"X", "O"}:
             print("")
             choice = input("    Please select a number from 1 to 9:\n    ")
             try:
