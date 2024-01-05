@@ -59,6 +59,7 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 - Add a timer for the user's turn.
 - Add a scoreboard and collect points from each round so you can see how many times you or the computer has lost/won.
 - Add more fun design aspects such as colors and emojis.
+- Improve the Computer's mark selection based on the game board after each user selection.
 
 ## Testing 
 
@@ -71,7 +72,7 @@ I manually tested this site in multiple ways highlighted below:
 
 ### Validator Testing 
 - PEP8
-  - There were no errors present when passing through the PEP8 testor ![PEP8](docs/screenshots/)
+  - There were no errors present when passing through the PEP8 CI testor ![PEP8](docs/screenshots/)
 
 ## Deployment
 
@@ -119,6 +120,8 @@ I used the cloning method to use the VSCode desktop IDE with GitHub, below are t
 No unfixed bugs.
 
 ## Credits 
+
+- The title art was generated on [FSymbols](https://fsymbols.com/generators/).
 
 - I drew help from various YouTube videos and Python works, all listed below:
 [CDcodes](https://www.youtube.com/watch?v=Q6CCdCBVypg&ab_channel=CDcodes)

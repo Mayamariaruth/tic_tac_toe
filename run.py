@@ -30,18 +30,17 @@ def game_board():
     """
     Prints the game board design with each number/box iteration.
     """
-    print("  " + board[0] + " | " + board[1] + " | " + board[2])
-    print("  " + "---------")
-    print("  " + board[3] + " | " + board[4] + " | " + board[5])
-    print("  " + "---------")
-    print("  " + board[6] + " | " + board[7] + " | " + board[8])
+    print("    " + board[0] + " | " + board[1] + " | " + board[2])
+    print("    " + "---------")
+    print("    " + board[3] + " | " + board[4] + " | " + board[5])
+    print("    " + "---------")
+    print("    " + board[6] + " | " + board[7] + " | " + board[8])
 
 
 def start_game():
     """
     Prints a welcome message with title art
-    and asks for user's name with an input.
-    Calls for check_user_name function to validate user's input.
+    and asks the player to enter "S" to start the game.
     """
     print("")
     print("""
@@ -53,37 +52,43 @@ def start_game():
     ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝
         """)
     print("")
-    print("  Welcome to the fun game of Tic Tac Toe!")
+    print("    Welcome to the fun game of Tic Tac Toe!")
+    start = input("    Please enter S to start the game:\n    ").upper()
+
+    if start == "S":
+        user_name()
+    else:
+        clear_console()
+        print("    Please enter S to start the game.")
+        start_game()
+
+
+def user_name():
+    """
+    Asks for user's name and validates it
+    by checking that they've inserted only letters.
+    """
     print("")
-    print("  We first need to know who is challenging our fierce Computer.")
-    name = input("  Please enter your name:\n  ").capitalize()
+    print("    We first need to know who is challenging our fierce Computer.")
+    name = input("    Please enter your name:\n    ").capitalize()
 
-    check_user_name(name)
-
-
-def check_user_name(name):
-    """
-    Validate user's name by checking that they've inserted only letters
-    or they're sent back to input their names again with an error message.
-    """
     if name.isalpha():
         print("")
-        print(f"  Welcome {name}!")
+        print(f"    Welcome {name}!")
         players()
     else:
         print("")
-        print("  Invalid data: Please insert your name with only letters.")
-        start_game()
+        print("    Invalid data: Please insert your name with only letters.")
+        user_name()
 
 
 def players():
     """
     Asks user if they want to be "X" or "O" and
-    Computer becomes the other one or if user inputs
-    anything other than "X, O", they receive an error message
-    and are asked again.
+    Computer becomes the other one.
+    Validates user's input if they've entered anything other than "X, O".
     """
-    user_player = input("  Would you like to be X or O?\n  ").upper()
+    user_player = input("    Would you like to be X or O?\n    ").upper()
     computer_player = ""
 
     if user_player == "X":
@@ -94,7 +99,7 @@ def players():
         play_game(user_player, computer_player, board)
     else:
         print("")
-        print("  Invalid data: Please insert X or O.")
+        print("    Invalid data: Please insert X or O.")
         players()
 
     return user_player, computer_player
@@ -122,7 +127,7 @@ def play_game(user_player, computer_player, board):
     """
     Alternates between users/computers turn and receive an
     input from the user that is validated
-    (spot is empty and input is a number between 1-9 or they receive an error).
+    (spot is empty and input is a number between 1-9).
     The selected number changes to user's or computer's symbol.
     """
     clear_console()
@@ -133,16 +138,16 @@ def play_game(user_player, computer_player, board):
         game_board()
         print("")
         print(
-            f"  You are {user_player} and the Computer is {computer_player}."
+            f"    You are {user_player} and the Computer is {computer_player}."
         )
         print("")
-        print("  Rules: The first player to get 3 of their marks in a row")
-        print("  (vertically, horizontally, or diagonally) is the winner.")
+        print("    Rules: The first player to get 3 of their marks in a row")
+        print("    (vertically, horizontally, or diagonally) is the winner.")
 
         # User's turn
         if turn % 2 == 0:
             print("")
-            choice = input("  Please select a number from 1 to 9:\n  ")
+            choice = input("    Please select a number from 1 to 9:\n    ")
             try:
                 choice = int(choice)
                 if 1 <= choice <= 9:
@@ -156,7 +161,7 @@ def play_game(user_player, computer_player, board):
                             print("")
                             game_board()
                             print("")
-                            print(f"  {winner} is the winner!")
+                            print(f"    {winner} is the winner!")
                             play_again()
                             break
 
@@ -165,21 +170,21 @@ def play_game(user_player, computer_player, board):
                             print("")
                             game_board()
                             print("")
-                            print("  It's a tie!")
+                            print("    It's a tie!")
                             play_again()
                             break
                     else:
-                        print("  That cell is taken. Please choose again.")
+                        print("    That cell is taken. Please choose again.")
                         ConnectionRefusedError
                         continue
                 else:
                     print(
-                        "  Invalid input. Please choose a number from 1 to 9."
+                        "    Invalid. Please choose a number from 1 to 9."
                     )
                     ConnectionRefusedError
                     continue
             except ValueError:
-                print("  Invalid input. Please choose a number from 1 to 9.")
+                print("    Invalid. Please choose a number from 1 to 9.")
                 continue
 
         clear_console()
@@ -194,7 +199,7 @@ def play_game(user_player, computer_player, board):
             print("")
             game_board()
             print("")
-            print(f"  {winner} is the winner!")
+            print(f"    {winner} is the winner!")
             play_again()
             break
 
@@ -203,7 +208,7 @@ def play_game(user_player, computer_player, board):
             print("")
             game_board()
             print("")
-            print("  It's a tie!")
+            print("    It's a tie!")
             play_again()
             break
 
@@ -225,24 +230,27 @@ def play_again():
     """
     Asks user if they want to play again and initiates
     start_game function and prints a thank you message if user selected "N".
-    Resets game board by defining the variable again.
+    Resets game board by defining the global variable with its intitial value.
     """
     global board
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     while True:
-        play_again = input("  Would you like to play again? (Y/N)\n  ").upper()
+        print("")
+        play_again = input("    Would you like to play again?(Y/N)\n    ")
+        play_again = play_again.upper()
+
         if play_again == "Y":
             clear_console()
             start_game()
             break
         elif play_again == "N":
             clear_console()
-            print("  Thank you for playing!")
+            print("    Thank you for playing!")
             start_game()
             break
         else:
-            print("  Invalid input. Please enter Y/N.")
+            print("    Invalid input. Please enter Y/N.")
 
 
 start_game()
