@@ -104,8 +104,8 @@ No unfixed bugs.
 
 - I drew help from various YouTube videos and Python works, all listed below:
 [CDcodes](https://www.youtube.com/watch?v=Q6CCdCBVypg&ab_channel=CDcodes)
+[Code Coach](https://www.youtube.com/watch?v=dK6gJw4-NCo&ab_channel=CodeCoach)
 [Estherns Tic Tac Toe game](https://gist.github.com/Estherns/35929cf33ab7797ead7da6289df2fbac)
-
 
 There can be similarities in the code but I changed it as much as possible for the purpose of my project.
 

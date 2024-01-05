@@ -1,18 +1,18 @@
 import random
 
 # Global variable used in most functions
-Board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 
 def game_board():
     """
     Prints the game board design with each number/box iteration.
     """
-    print(Board[0] + " | " + Board[1] + " | " + Board[2])
+    print(board[0] + " | " + board[1] + " | " + board[2])
     print("---------")
-    print(Board[3] + " | " + Board[4] + " | " + Board[5])
+    print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
-    print(Board[6] + " | " + Board[7] + " | " + Board[8])
+    print(board[6] + " | " + board[7] + " | " + board[8])
 
 
 def start_game():
@@ -57,11 +57,11 @@ def players():
     if user_player == "X":
         print("You are X and the Computer is O!")
         computer_player = "O"
-        play_game(user_player, computer_player, Board)
+        play_game(user_player, computer_player, board)
     elif user_player == "O":
         print("You are O and the Computer is X!")
         computer_player = "X"
-        play_game(user_player, computer_player, Board)
+        play_game(user_player, computer_player, board)
     else:
         print("")
         print("Invalid data: Please insert X or O.")
@@ -70,31 +70,29 @@ def players():
     return user_player, computer_player
 
 
-def check_winner(Board):
+def check_winner(board):
     """
     Defines the winning combinations as lists
     and check's the board for the winner
     by looking at the combinations for three matching symbols
     (and not empty spaces) and then returns the symbol as the winner
     """
-    # Define winning combinations as lists
     winning_combinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],   # Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8],   # Columns
         [0, 4, 8], [2, 4, 6]   # Diagonals
     ]
 
-    # Checks for three matching symbols with the combinations
     for combo in winning_combinations:
-        if all(Board[i] == Board[combo[0]] and Board[i] != " " for i in combo):
-            return Board[combo[0]]
+        if all(board[i] == board[combo[0]] and board[i] != " " for i in combo):
+            return board[combo[0]]
 
 
-def play_game(user_player, computer_player, Board):
+def play_game(user_player, computer_player, board):
     """
     Alternates between users/computers turn and receives an
     input from the user that is validated
-    (spot is empty and input is a number or they receive an error).
+    (spot is empty and input is a number between 1-9 or they receive an error).
     The selected number changes to users or computers symbol.
     """
     turn = 0
@@ -109,20 +107,20 @@ def play_game(user_player, computer_player, Board):
 
         # User's turn
         if turn % 2 == 0:
-            choice = input("Please select a number from 1 to 9:\n")
+            choice = int(input("Please select a number from 1 to 9:\n"))
             try:
-                choice = int(choice)
                 if 1 <= choice <= 9:
-                    if Board[int(choice) - 1] not in ["X", "O"]:
+                    if board[choice - 1] not in ["X", "O"]:
                         turn += 1
-                        Board[choice - 1] = user_player
-                        winner = check_winner(Board)
+                        board[choice - 1] = user_player
+                        winner = check_winner(board)
 
                         if winner:
                             print("")
                             game_board()
                             print("")
                             print(f"{winner} is the winner!")
+                            play_again()
                             break
 
                         if turn == 9:
@@ -130,6 +128,7 @@ def play_game(user_player, computer_player, Board):
                             game_board()
                             print("")
                             print("It's a tie!")
+                            play_again()
                             break
                     else:
                         print("That cell is taken. Please choose again.")
@@ -144,15 +143,16 @@ def play_game(user_player, computer_player, Board):
                 continue
 
         # Computer's turn
-        computer_move(computer_player, Board)
+        computer_move(computer_player, board)
         turn += 1
-        winner = check_winner(Board)
+        winner = check_winner(board)
 
         if winner:
             print("")
             game_board()
             print("")
             print(f"{winner} is the winner!")
+            play_again()
             break
 
         if turn == 9:
@@ -160,22 +160,21 @@ def play_game(user_player, computer_player, Board):
             game_board()
             print("")
             print("It's a tie!")
+            play_again()
             break
 
 
-def computer_move(computer_player, Board):
+def computer_move(computer_player, board):
     """
     Acts as the Computer and generates a random number
     between 9 as its mark selection
     (that is not already marked with "X" or "O")
     """
-    # List of empty positions on the board
-    empty_positions = [i for i in range(9) if Board[i] not in ["X", "O"]]
+    empty_positions = [i for i in range(9) if board[i] not in ["X", "O"]]
 
-    # If there are empty positions, the computer chooses a random one
     if empty_positions:
         computer_choice = random.choice(empty_positions)
-        Board[computer_choice] = computer_player
+        board[computer_choice] = computer_player
 
 
 def play_again():
@@ -195,12 +194,4 @@ def play_again():
             print("Invalid input. Please enter Y/N.")
 
 
-def main():
-    """
-    Call on game functions
-    """
-    start_game()
-    play_again()
-
-
-main()
+start_game()
