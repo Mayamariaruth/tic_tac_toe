@@ -22,6 +22,10 @@ def clear_console():
     os.system(command)
 
 
+# To clear the Heroku console before game start
+clear_console()
+
+
 def game_board():
     """
     Prints the game board design with each number/box iteration.
@@ -35,17 +39,24 @@ def game_board():
 
 def start_game():
     """
-    Prints a welcome message and asks for user's name with an input.
+    Prints a welcome message with title art
+    and asks for user's name with an input.
     Calls for check_user_name function to validate user's input.
     """
-    clear_console()
     print("")
-    game_board()
+    print("""
+    ████████╗██╗░█████╗░  ████████╗░█████╗░░█████╗░  ████████╗░█████╗░███████╗
+    ╚══██╔══╝██║██╔══██╗  ╚══██╔══╝██╔══██╗██╔══██╗  ╚══██╔══╝██╔══██╗██╔════╝
+    ░░░██║░░░██║██║░░╚═╝  ░░░██║░░░███████║██║░░╚═╝  ░░░██║░░░██║░░██║█████╗░░
+    ░░░██║░░░██║██║░░██╗  ░░░██║░░░██╔══██║██║░░██╗  ░░░██║░░░██║░░██║██╔══╝░░
+    ░░░██║░░░██║╚█████╔╝  ░░░██║░░░██║░░██║╚█████╔╝  ░░░██║░░░╚█████╔╝███████╗
+    ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝
+        """)
     print("")
-    print("  Welcome to Tic Tac Toe!")
+    print("  Welcome to the fun game of Tic Tac Toe!")
     print("")
     print("  We first need to know who is challenging our fierce Computer.")
-    name = input("  Please enter your name:\n").capitalize()
+    name = input("  Please enter your name:\n  ").capitalize()
 
     check_user_name(name)
 
@@ -72,7 +83,7 @@ def players():
     anything other than "X, O", they receive an error message
     and are asked again.
     """
-    user_player = input("  Would you like to be X or O?\n").upper()
+    user_player = input("  Would you like to be X or O?\n  ").upper()
     computer_player = ""
 
     if user_player == "X":
@@ -125,13 +136,13 @@ def play_game(user_player, computer_player, board):
             f"  You are {user_player} and the Computer is {computer_player}."
         )
         print("")
-        print("Rules: The first player to get 3 of their marks in a row")
-        print("(vertically, horizontally, or diagonally) is the winner.")
+        print("  Rules: The first player to get 3 of their marks in a row")
+        print("  (vertically, horizontally, or diagonally) is the winner.")
 
         # User's turn
         if turn % 2 == 0:
             print("")
-            choice = input("  Please select a number from 1 to 9:\n")
+            choice = input("  Please select a number from 1 to 9:\n  ")
             try:
                 choice = int(choice)
                 if 1 <= choice <= 9:
@@ -141,6 +152,7 @@ def play_game(user_player, computer_player, board):
                         winner = check_winner(board)
 
                         if winner:
+                            clear_console()
                             print("")
                             game_board()
                             print("")
@@ -149,6 +161,7 @@ def play_game(user_player, computer_player, board):
                             break
 
                         if turn == 9:
+                            clear_console()
                             print("")
                             game_board()
                             print("")
@@ -177,6 +190,7 @@ def play_game(user_player, computer_player, board):
         winner = check_winner(board)
 
         if winner:
+            clear_console()
             print("")
             game_board()
             print("")
@@ -185,6 +199,7 @@ def play_game(user_player, computer_player, board):
             break
 
         if turn == 9:
+            clear_console()
             print("")
             game_board()
             print("")
@@ -209,19 +224,21 @@ def computer_move(computer_player, board):
 def play_again():
     """
     Asks user if they want to play again and initiates
-    start_game function or prints a thank you message.
+    start_game function and prints a thank you message if user selected "N".
     Resets game board by defining the variable again.
     """
     global board
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     while True:
-        play_again = input("  Would you like to play again? (Y/N)\n").upper()
+        play_again = input("  Would you like to play again? (Y/N)\n  ").upper()
         if play_again == "Y":
+            clear_console()
             start_game()
             break
         elif play_again == "N":
-            print("Thank you for playing!")
+            clear_console()
+            print("  Thank you for playing!")
             start_game()
             break
         else:

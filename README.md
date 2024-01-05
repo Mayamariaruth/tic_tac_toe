@@ -7,7 +7,7 @@ It runs in the Code Institute mock terminal on Heroku.
 
 The user plays against the Computer taking turns marking the spaces in a three-by-three grid with X or O. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.
 
-Link to the live site here - [TicTacToe](https://tictactoe1-722b4773e2cf.herokuapp.com/)
+Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herokuapp.com/)
 
 ![Responsive Mockup](docs/screenshots/am-i.png)
 
@@ -15,10 +15,8 @@ Link to the live site here - [TicTacToe](https://tictactoe1-722b4773e2cf.herokua
 1. [**Introduction**](#introduction)
 1. [**How to play**](#how-to-play)
 1. [**Features**](#Features)
-    * [***Header***](#header)
-    * [***Home page***](#home-page)
-    * [***Quiz***](#quiz)
-    * [***End of quiz popup***](#end-of-quiz-popup)
+    * [***Existing features***](#existing-features)
+    * [***Future features***](#future-features)
 1. [**Testing**](#testing)
     * [***Manual testing***](#manual-testing)
     * [***Validator testing***](#validator-testing)
@@ -33,13 +31,13 @@ Link to the live site here - [TicTacToe](https://tictactoe1-722b4773e2cf.herokua
 
 - The user first selects the symbol it wishes to be, "X" or "O". The Computer is then automatically the symbol that wasn't selected.
 - The game is played on a grid that's 3 squares by 3 squares.
-- Players take turns putting their marks in a square by selecting a number labeled on each square.
+- Players take turns putting their marks in a square by entering the number labeled on each square.
 - When one player has achieved 3 marks in a row vertically, horizontally or diagonally, the game is over and that player has won.
 - If all squares are filled up without a winner, we have a tie.
 
-
 ## Features 
 
+### Existing features
 - 
 
 ![Header](docs/screenshots/)
@@ -58,7 +56,9 @@ Link to the live site here - [TicTacToe](https://tictactoe1-722b4773e2cf.herokua
 
 
 ### Future features
-- 
+- Add a timer for the user's turn.
+- Add a scoreboard and collect points from each round so you can see how many times you or the computer has lost/won.
+- Add more fun design aspects such as colors and emojis.
 
 ## Testing 
 
@@ -111,7 +111,7 @@ I used the cloning method to use the VSCode desktop IDE with GitHub, below are t
 4. **Issue**
     * Board doesn't reset when deciding to play again, previous game plays continues on to the next round.
 * **Fix**
-    * 
+    * Define the global variable 'board' with its initial value in the play_again function.
 
 
 ### Unfixed Bugs
