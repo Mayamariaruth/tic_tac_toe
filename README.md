@@ -87,6 +87,7 @@ I manually tested this site in multiple ways highlighted below:
 ## Deployment
 
 To deploy the site to Heroku, I went through below steps: 
+- Go to [Heroku](https://heroku.com/) and log into your account.
 - 
 
 Live link to the site - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herokuapp.com/)

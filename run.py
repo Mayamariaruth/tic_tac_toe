@@ -30,11 +30,11 @@ def game_board():
     """
     Prints the game board design with each number/box iteration.
     """
-    print("    " + board[0] + " | " + board[1] + " | " + board[2])
-    print("    " + "---------")
-    print("    " + board[3] + " | " + board[4] + " | " + board[5])
-    print("    " + "---------")
-    print("    " + board[6] + " | " + board[7] + " | " + board[8])
+    print(" " + board[0] + " | " + board[1] + " | " + board[2])
+    print(" " + "---------")
+    print(" " + board[3] + " | " + board[4] + " | " + board[5])
+    print(" " + "---------")
+    print(" " + board[6] + " | " + board[7] + " | " + board[8])
 
 
 def start_game():
@@ -44,22 +44,22 @@ def start_game():
     """
     print("")
     print("""
-    ████████╗██╗░█████╗░  ████████╗░█████╗░░█████╗░  ████████╗░█████╗░███████╗
-    ╚══██╔══╝██║██╔══██╗  ╚══██╔══╝██╔══██╗██╔══██╗  ╚══██╔══╝██╔══██╗██╔════╝
-    ░░░██║░░░██║██║░░╚═╝  ░░░██║░░░███████║██║░░╚═╝  ░░░██║░░░██║░░██║█████╗░░
-    ░░░██║░░░██║██║░░██╗  ░░░██║░░░██╔══██║██║░░██╗  ░░░██║░░░██║░░██║██╔══╝░░
-    ░░░██║░░░██║╚█████╔╝  ░░░██║░░░██║░░██║╚█████╔╝  ░░░██║░░░╚█████╔╝███████╗
-    ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝
-        """)
+ ████████╗██╗░█████╗░  ████████╗░█████╗░░█████╗░  ████████╗░█████╗░███████╗
+ ╚══██╔══╝██║██╔══██╗  ╚══██╔══╝██╔══██╗██╔══██╗  ╚══██╔══╝██╔══██╗██╔════╝
+ ░░░██║░░░██║██║░░╚═╝  ░░░██║░░░███████║██║░░╚═╝  ░░░██║░░░██║░░██║█████╗░░
+ ░░░██║░░░██║██║░░██╗  ░░░██║░░░██╔══██║██║░░██╗  ░░░██║░░░██║░░██║██╔══╝░░
+ ░░░██║░░░██║╚█████╔╝  ░░░██║░░░██║░░██║╚█████╔╝  ░░░██║░░░╚█████╔╝███████╗
+ ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝
+    """)
     print("")
-    print("    Welcome to the fun game of Tic Tac Toe!")
-    start = input("    Please enter S to start the game:\n    ").upper()
+    print(" Welcome to the fun game of Tic Tac Toe!")
+    start = input(" Please enter S to start the game:\n ").upper()
 
     if start == "S":
         user_name()
     else:
         clear_console()
-        print("    Please enter S to start the game.")
+        print(" Please enter S to start the game.")
         start_game()
 
 
@@ -69,16 +69,16 @@ def user_name():
     by checking that they've inserted only letters.
     """
     print("")
-    print("    We first need to know who is challenging our fierce Computer.")
-    name = input("    Please enter your name:\n    ").capitalize()
+    print(" We first need to know who is challenging our fierce Computer.")
+    name = input(" Please enter your name:\n ").capitalize()
 
     if name.isalpha():
         print("")
-        print(f"    Welcome {name}!")
+        print(f" Welcome {name}!")
         players()
     else:
         print("")
-        print("    Invalid data: Please insert your name with only letters.")
+        print(" Invalid data: Please insert your name with only letters.")
         user_name()
 
 
@@ -88,7 +88,7 @@ def players():
     Computer becomes the other one.
     Validates user's input if they've entered anything other than "X, O".
     """
-    user_player = input("    Would you like to be X or O?\n    ").upper()
+    user_player = input(" Would you like to be X or O?\n ").upper()
     computer_player = ""
 
     if user_player == "X":
@@ -99,7 +99,7 @@ def players():
         play_game(user_player, computer_player, board)
     else:
         print("")
-        print("    Invalid data: Please insert X or O.")
+        print(" Invalid data: Please insert X or O.")
         players()
 
     return user_player, computer_player
@@ -139,16 +139,16 @@ def play_game(user_player, computer_player, board):
         game_board()
         print("")
         print(
-            f"    You are {user_player} and the Computer is {computer_player}."
+            f" You are {user_player} and the Computer is {computer_player}."
         )
         print("")
-        print("    Rules: The first player to get 3 of their marks in a row")
-        print("    (vertically, horizontally, or diagonally) is the winner.")
+        print(" Rules: The first player to get 3 of their marks in a row")
+        print(" (vertically, horizontally, or diagonally) is the winner.")
 
         # User's turn
         if turn % 2 == (user_player == "O") and user_player in {"X", "O"}:
             print("")
-            choice = input("    Please select a number from 1 to 9:\n    ")
+            choice = input(" Please select a number from 1 to 9:\n ")
             try:
                 choice = int(choice)
                 if 1 <= choice <= 9:
@@ -162,7 +162,7 @@ def play_game(user_player, computer_player, board):
                             print("")
                             game_board()
                             print("")
-                            print(f"    {winner} is the winner!")
+                            print(f" {winner} is the winner!")
                             play_again()
                             break
 
@@ -171,21 +171,21 @@ def play_game(user_player, computer_player, board):
                             print("")
                             game_board()
                             print("")
-                            print("    It's a tie!")
+                            print(" It's a tie!")
                             play_again()
                             break
                     else:
-                        print("    That cell is taken. Please choose again.")
+                        print(" That cell is taken. Please choose again.")
                         ConnectionRefusedError
                         continue
                 else:
                     print(
-                        "    Invalid. Please choose a number from 1 to 9."
+                        " Invalid number. Please choose a number from 1 to 9."
                     )
                     ConnectionRefusedError
                     continue
             except ValueError:
-                print("    Invalid. Please choose a number from 1 to 9.")
+                print(" Invalid input. Please choose a number from 1 to 9.")
                 continue
 
         clear_console()
@@ -200,7 +200,7 @@ def play_game(user_player, computer_player, board):
             print("")
             game_board()
             print("")
-            print(f"    {winner} is the winner!")
+            print(f" {winner} is the winner!")
             play_again()
             break
 
@@ -209,7 +209,7 @@ def play_game(user_player, computer_player, board):
             print("")
             game_board()
             print("")
-            print("    It's a tie!")
+            print(" It's a tie!")
             play_again()
             break
 
@@ -238,7 +238,7 @@ def play_again():
 
     while True:
         print("")
-        play_again = input("    Would you like to play again?(Y/N)\n    ")
+        play_again = input(" Would you like to play again?(Y/N)\n ")
         play_again = play_again.upper()
 
         if play_again == "Y":
@@ -250,7 +250,7 @@ def play_again():
             game_end()
             break
         else:
-            print("    Invalid input. Please enter Y/N.")
+            print(" Invalid input. Please enter Y/N.")
 
 
 def game_end():
@@ -260,17 +260,17 @@ def game_end():
     """
     print("")
     print("""
-    ▀█▀ █░█ ▄▀█ █▄░█ █▄▀   █▄█ █▀█ █░█ 
-    ░█░ █▀█ █▀█ █░▀█ █░█   ░█░ █▄█ █▄█
+ ▀█▀ █░█ ▄▀█ █▄░█ █▄▀   █▄█ █▀█ █░█ 
+ ░█░ █▀█ █▀█ █░▀█ █░█   ░█░ █▄█ █▄█
     """)
     print("""
-    █▀▀ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █ █▄░█ █▀▀ █
-    █▀░ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ █ █░▀█ █▄█ ▄
+ █▀▀ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █ █▄░█ █▀▀ █
+ █▀░ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ █ █░▀█ █▄█ ▄
     """)
 
     while True:
         print("")
-        restart_game = input("    Enter G to go back to the game:\n    ")
+        restart_game = input(" Enter G to go back to the game:\n ")
         restart_game = restart_game.upper()
 
         if restart_game == "G":
@@ -279,7 +279,7 @@ def game_end():
             break
         else:
             clear_console()
-            print("    Invalid input. Please enter G to go back to the game.")
+            print(" Invalid input. Please enter G to go back to the game.")
             game_end()
 
 
