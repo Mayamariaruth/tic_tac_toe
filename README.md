@@ -33,26 +33,48 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 - The user first selects the symbol it wishes to be, "X" or "O". The Computer is then automatically the symbol that wasn't selected.
 - The game is played on a grid that's 3 squares by 3 squares.
 - Players take turns putting their marks in a square by entering the number labeled on each square.
-- When one player has achieved 3 marks in a row vertically, horizontally or diagonally, the game is over and that player has won.
+- When one player has achieved 3 marks in a row vertically, horizontally, or diagonally, the game is over and that player has won.
 - If all squares are filled up without a winner, we have a tie.
 
 ## Features 
 
 ### Existing features
-- 
-    *
+- Start page
+    * Large title art for a cool design
+    * Asking for user input to start the game
+
 ![Start](docs/screenshots/start.png)
 
-- 
+
+- Start game questions
+    * Asking for the user's name
+    * Asking for the symbol the user would like to play as to start the game
+
 ![Start questions](docs/screenshots/name.png)
 
-- 
+
+- Gameplay
+    * Numbered board to place marks
+    * The "X" symbol always starts first (which is not highlighted because then the user can just pick "X" every time and start first)
+    * Play against the computer
+    * Rules are always present for easy access
+    * Choose a number between 1-9 for your mark and the computer will automatically place its mark during its turn
+    * User input is validated, it has to be a number and you can't place it in an occupied space
+
 ![Game](docs/screenshots/game.png)
 
-- 
-![Winner](docs/screenshots/winner.png)
 
-- 
+- Result
+    * The winner of the game is highlighted or if it is a tie
+    * Allows users to play again
+    * The board is reset for the next gameplay
+
+![Result](docs/screenshots/winner.png)
+
+
+- End of game
+    * If the user decides to not play again, a fun "thank you" art and an option to go back to the game
+
 ![End of game](docs/screenshots/end.png)
 
 ### Future features
@@ -63,7 +85,7 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 
 ## Data model
 
-This project is a functional based application with one global variable, "board".
+This project is a functional-based application with one global variable, "board".
 
 This variable is passed through the various functions that run the game and it updates its value (replacing the numbers with an "X" or "O") after each user input during the Tic Tac Toe game.
 
@@ -80,7 +102,7 @@ I manually tested this site in multiple ways highlighted below:
 
 ### Validator Testing 
 - PEP8
-  - There were no errors present when passing through the PEP8 CI testor ![PEP8](docs/screenshots/pep8.png)
+  - There were no errors present when passing through the PEP8 CI tester ![PEP8](docs/screenshots/pep8.png)
 
 ## Deployment
 
@@ -93,7 +115,7 @@ To deploy the site to Heroku, I went through below steps:
 - Click "Reveal Config Vars" and input the key as "PORT" and the value as "8000" and press "Add".
 - Underneath this section, you have the "Buildpacks" section. Click "Add buildpack" and add the "python" buildpack (make sure to click "save changes" after selecting each buildpack), as well as the "nodejs" buildpack.
 - Go back to the navigation bar and select "Deploy".
-- Scroll down to the "Connect to GitHub" section and click the connect button.
+- Scroll down to the "Connect to GitHub" section and click on the Connect button.
 - After allowing Heroku access to GitHub, the "Connect to GitHub" section will allow you to search for the repository you wish to connect.
 - Find your repository and click "Connect".
 - You can now choose automatic deploys (Heroku deploys your app after every GitHub push you make) or manual deploys.
@@ -115,22 +137,22 @@ I used the cloning method to use the VSCode desktop IDE with GitHub, below are t
 
 ### Fixed Bugs
 1. **Issue**
-    * If user inputs a mark on a spot that is already occupied, the turn jumps to the computer instead of allowing user to input again.
+    * If the user inputs a mark on a spot that is already occupied, the turn jumps to the computer instead of allowing the user to input again.
 * **Fix**
     * Add "ConnectionRefusedError" and "continue" to else statements in the play_game function.
 
 2. **Issue**
-    * If user inputs a number higher than 9 to add a mark to, an error message of "IndexError: list index out of range" pops up.
+    * If the user inputs a number higher than 9 to add a mark to, an error message of "IndexError: list index out of range" pops up.
 * **Fix**
     * Add another if/else statement ("if 1 <= choice <= 9") inside the try/except block of the play_game function.
 
 3. **Issue**
-    * When user can input "Y/N" to decide to play again, the user could input any letter and it would register as a "N".
+    * When the user can input "Y/N" to decide to play again, the user could input any letter and it would register as an "N".
 * **Fix**
     * Change the if/else statement in the play_again function to a while loop with if/elif/else to target every input.
 
 4. **Issue**
-    * Board doesn't reset when deciding to play again, previous game plays continues on to the next round.
+    * The board doesn't reset when deciding to play again, previous gameplays continue to the next round.
 * **Fix**
     * Declare the global variable 'board' with its initial value in the play_again function.
 
@@ -141,7 +163,7 @@ No unfixed bugs.
 
 ## Credits 
 
-- The title art was generated on [FSymbols](https://fsymbols.com/generators/).
+- The title art and end-of-game art were generated on [FSymbols](https://fsymbols.com/generators/).
 
 - I drew help from various YouTube videos and Python works, all listed below:
 [CDcodes](https://www.youtube.com/watch?v=Q6CCdCBVypg&ab_channel=CDcodes)
