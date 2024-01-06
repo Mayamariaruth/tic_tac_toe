@@ -59,7 +59,6 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
     * Play against the computer
     * Rules are always present for easy access
     * Choose a number between 1-9 for your mark and the computer will automatically place its mark during its turn
-    * User input is validated, it has to be a number and you can't place it in an occupied space
 
 ![Game](docs/screenshots/game.png)
 
@@ -77,7 +76,18 @@ Link to the live site here - [Tic Tac Toe](https://tictactoe1-722b4773e2cf.herok
 
 ![End of game](docs/screenshots/end.png)
 
+
+- User input validation (checking for errors)
+    * Start page when user inputs "S" to start game
+    * Start game question when user inputs their name
+    * Start game question when choosing what symbol they would like to be
+    * Game board when user selects their mark
+    * Play again question
+    * End of game question to go back to game
+
+
 ### Future features
+- Display the user's name or "the Computer" at the end of the game when winner is announced.
 - Add a timer for the user's turn.
 - Add a scoreboard and collect points from each round so you can see how many times you or the computer has lost/won.
 - Add more fun design aspects such as colors and emojis.
@@ -166,12 +176,15 @@ No unfixed bugs.
 - The title art and end-of-game art were generated on [FSymbols](https://fsymbols.com/generators/).
 
 - I drew help from various YouTube videos and Python works, all listed below:
-[CDcodes](https://www.youtube.com/watch?v=Q6CCdCBVypg&ab_channel=CDcodes)
-[Code Coach](https://www.youtube.com/watch?v=dK6gJw4-NCo&ab_channel=CodeCoach)
-[Estherns Tic Tac Toe game](https://gist.github.com/Estherns/35929cf33ab7797ead7da6289df2fbac)
+
+    [CDcodes](https://www.youtube.com/watch?v=Q6CCdCBVypg&ab_channel=CDcodes)
+
+    [Code Coach](https://www.youtube.com/watch?v=dK6gJw4-NCo&ab_channel=CodeCoach)
+
+    [Estherns Tic Tac Toe game](https://gist.github.com/Estherns/35929cf33ab7797ead7da6289df2fbac)
 
 There can be similarities in the code but I changed it as much as possible for the purpose of my project.
 
 - I used the code for the clear_console directly from [Delftstack](https://www.delftstack.com/howto/python/python-clear-console/)
 
-- W3Schools and StackOverflow were the sites mostly used for external references.
+- W3Schools and StackOverflow were the sites mostly used for external references, but Google is always your best friend as well.

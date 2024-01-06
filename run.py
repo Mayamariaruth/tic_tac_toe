@@ -53,14 +53,16 @@ def start_game():
     """)
     print("")
     print(" Welcome to the fun game of Tic Tac Toe!")
-    start = input(" Please enter S to start the game:\n ").upper()
 
-    if start == "S":
-        user_name()
-    else:
-        clear_console()
-        print(" Please enter S to start the game.")
-        start_game()
+    start = ""
+
+    while start != "S":
+        start = input(" Please enter S to start the game:\n ").upper()
+
+        if start == "S":
+            user_name()
+        else:
+            print(" Invalid input. Please enter S to start the game.")
 
 
 def user_name():
@@ -175,16 +177,19 @@ def play_game(user_player, computer_player, board):
                             play_again()
                             break
                     else:
+                        clear_console()
                         print(" That cell is taken. Please choose again.")
                         ConnectionRefusedError
                         continue
                 else:
+                    clear_console()
                     print(
                         " Invalid number. Please choose a number from 1 to 9."
                     )
                     ConnectionRefusedError
                     continue
             except ValueError:
+                clear_console()
                 print(" Invalid input. Please choose a number from 1 to 9.")
                 continue
 
@@ -230,7 +235,7 @@ def computer_move(computer_player, board):
 def play_again():
     """
     Asks user if they want to play again and initiates
-    start_game function and prints a thank you message if user selected "N".
+    start_game function or sends user to game_end function.
     Resets game board by defining the global variable with its intitial value.
     """
     global board
